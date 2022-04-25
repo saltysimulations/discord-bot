@@ -17,3 +17,11 @@ This is the repository for the Salty Simulations Discord Bot
 ## Contributing
 
 [Please read out contributing md (link to come)]()
+
+## License
+
+This repository is licensed under AGPL v3.
+
+Referenced repositories are:
+
+* [FlyByWire discord-bot](https://github.com/flybywiresim/discord-bot/)
