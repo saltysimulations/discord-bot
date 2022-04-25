@@ -1,3 +1,28 @@
+//============================================================
+//
+// Salty Simulations Discord Bot
+// Author: saltysimulations
+// URL: https://github.com/owen2007/Salty-Simulations-Discord-Bot/
+// Date: 2022-04-25
+// Version: 0.0.1
+// License: AGPLv3
+//
+// Source based on:
+// FlyByWire Discord Bot
+// Author: flybywire
+// URL: https://github.com/flybywiresim/discord-bot/
+//
+//============================================================
+//
+// This is the main file for the bot. It is responsible for
+// setting up a discord.js bot client, importing and
+// configuring all required modules, and loading all
+// categories & commands.
+//
+//============================================================
+
+
+
 // Import libraries
 import Discord from 'discord.js';
 import fs from 'fs';
