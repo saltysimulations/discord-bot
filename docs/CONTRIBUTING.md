@@ -97,10 +97,7 @@ follow the steps below to enable them
 //
 //============================================================
 //
-// This is the main file for the bot. It is responsible for
-// setting up a discord.js bot client, importing and
-// configuring all required modules, and loading all
-// categories & commands.
+//
 //
 //============================================================
 ```
@@ -125,7 +122,7 @@ follow the steps below to enable them
 //
 //============================================================
 //
-// TIMBOOOOOOOOOOOOOOOOOOOOOOOOOO
+//
 //
 //============================================================
 
