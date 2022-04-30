@@ -6,7 +6,7 @@ When contributing to this repository please adhere to the guidelines below.
 
 - Every line of code should be written profesionally and clearly
 - Before creating a PR proofread your work and make sure it is ready for review
-- Create your commands in the category relative to the command
+- Create your commands in the category relevant to the command
 - Test your build locally before submitting anything for review
 
 # Writing Guidelines
@@ -16,8 +16,8 @@ All guidelines created for this repository must be followed at all times to ensu
 Please refer to the listings below to achieve this.
 
 - Refrain from any use of exclamation points (!) unless it is for a specific reason e.g. (warnings)
-- Please use the proper capitilisation and names for 3rd party services e.g. (A32NX and not a32nx)
-- Ensure that all spelling,punctuation and grammar are correct
+- Please use the proper capitilisation and names for 3rd party services e.g. (747S and not 747s)
+- Ensure that all spelling, punctuation and grammar are correct
 - Ask a Bot-Developer for help if you are unsure or stuck with anything when writing your command
 - Send a message in #Discord-Bot when beginning work on a command or if you are interested in adding a command that has not yet been identified
 
@@ -103,6 +103,7 @@ follow the steps below to enable them
 ```
 
 - 3. Create your command
+- 4. Update the date inside of the Licencing e.g. (In the Timbo command displayed below the date is `2022-04-25` when creating your command you must update this to the date of the day that you are creating your command on)
 - 4. If you have any difficulties creating a command feel free to use the tempelate below but remember to change all details to make it suitable to the command you are creating
 
 ```ts
@@ -122,7 +123,7 @@ follow the steps below to enable them
 //
 //============================================================
 //
-//
+//       TIMBOOOOOOOOOOOOOOOOOO
 //
 //============================================================
 
