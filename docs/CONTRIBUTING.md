@@ -103,7 +103,7 @@ follow the steps below to enable them
 ```
 
 - 3. Create your command
-- 4. Update the date inside of the Licencing e.g. (In the Timbo command displayed below the date is `2022-04-25` when creating your command you must update this to the date of the day that you are creating your command on)
+- 4. Update the date inside of the Licencing e.g. (In the Timbo command displayed below, the date is `2022-04-25` when creating your command you must update this to the date of the day that you are creating your command on)
 - 4. If you have any difficulties creating a command feel free to use the tempelate below but remember to change all details to make it suitable to the command you are creating
 
 ```ts
