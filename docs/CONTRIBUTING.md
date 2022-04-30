@@ -16,7 +16,7 @@ All guidelines created for this repository must be followed at all times to ensu
 Please refer to the listings below to achieve this.
 
 - Refrain from any use of exclamation points (!) unless it is for a specific reason e.g. (warnings)
-- Please use the proper capitilisation and names for 3rd party services e.g. (747S and not 747s)
+- Please use the proper capitilisation and names for 3rd party services e.g. (74S and not 74s)
 - Ensure that all spelling, punctuation and grammar are correct
 - Ask a Bot-Developer for help if you are unsure or stuck with anything when writing your command
 - Send a message in #Discord-Bot when beginning work on a command or if you are interested in adding a command that has not yet been identified
