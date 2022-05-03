@@ -71,7 +71,7 @@ follow the steps below to enable them
 - 1. open a command prompt/terminal in your repo directory
 - 2. Run `npm run dev`
 - 3. If all has gone well, you will see the Bot is running as 'http://localhost:3000' and logged into the name of the Bot you created!
-- 4. You can now test your commands
+- 4. You can now test your commands!
 
 # Editing Methods
 
