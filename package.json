@@ -31,5 +31,8 @@
     "eslint": "^8.13.0",
     "nodemon": "^2.0.15",
     "sanitize-filename": "^1.6.3"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.3"
   }
 }

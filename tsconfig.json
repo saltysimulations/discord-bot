@@ -2,7 +2,8 @@
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
         "lib": ["ES2020"],
-        "outDir": "build",
+        "rootDir": "./src",
+        "outDir": "./build",
         "moduleResolution": "node",
         "esModuleInterop": true,
         "experimentalDecorators": false,
