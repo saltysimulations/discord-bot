@@ -16,7 +16,8 @@ This is the repository for the Salty Simulations Discord Bot
 
 ## Contributing
 
-[Please read out contributing md](https://github.com/owen2007/Salty-Simulations-Discord-Bot/blob/06b8f4f2dc6477ed26c7e5f04c54de1871e325dd/docs/CONTRIBUTING.md)
+If you are interested in contributing to the Salty Simulations Discord Bot,
+[Please read out contributing md](https://github.com/owen2007/Salty-Simulations-Discord-Bot/blob/06b8f4f2dc6477ed26c7e5f04c54de1871e325dd/docs/CONTRIBUTING.md) before getting to work
 
 ## License
 
