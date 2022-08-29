@@ -48,6 +48,7 @@ const client = new Discord.Client({
 
 // Import config
 import config from './config';
+import { CommandDefinition } from './lib/command';
 
 // Database connections
 //TODO: None actually here yet lmao
@@ -58,7 +59,7 @@ let eventList: string[] = fs.readdirSync('./events');
 for (const file of eventList)
 {
     // Load event
-    const event = require(`./events/${file}`); 
+    const event = require(`./events/${file}`);
 
     // Assign handler
     if(event.once)
@@ -84,7 +85,7 @@ for(const cat of categoryList)
     for(const file of commandList)
     {
         // Load command
-        const command = require(`./commands/${cat}/${file}`).command;
+        const command: CommandDefinition = require(`./commands/${cat}/${file}`).command;
 
         console.log(`Loaded command ${command.id}`);
 

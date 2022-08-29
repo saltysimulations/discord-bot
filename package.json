@@ -1,38 +1,39 @@
 {
-  "name": "salty-simulations-discord-bot",
-  "version": "0.0.1",
-  "scripts": {
-    "build:typescript": "tsc",
-    "run:node": "node build/app.js",
-    "dev": "nodemon --watch src/ -e ts --exec ts-node src/app.ts",
-    "run": "npm run build:typescript && npm run run:node",
-    "lint": "eslint src/**/*.ts",
-    "lint-fix": "eslint src/**/*.ts --fix"
-  },
-  "description": "Salty Simulations Discord Bot",
-  "main": "app.ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/owen2007/Salty-Simulations-Discord-Bot.git"
-  },
-  "keywords": [
-    "discord",
-    "bot"
-  ],
-  "author": "Salty Simulations",
-  "license": "AGPL-3.0",
-  "bugs": {
-    "url": "https://github.com/owen2007/Salty-Simulations-Discord-Bot/issues"
-  },
-  "homepage": "https://github.com/owen2007/Salty-Simulations-Discord-Bot#readme",
-  "dependencies": {
-    "discord.js": "^13.6.0",
-    "dotenv": "^16.0.0",
-    "eslint": "^8.13.0",
-    "nodemon": "^2.0.15",
-    "sanitize-filename": "^1.6.3"
-  },
-  "devDependencies": {
-    "typescript": "^4.6.3"
-  }
+    "name": "salty-simulations-discord-bot",
+    "version": "0.0.1",
+    "scripts": {
+        "build:typescript": "tsc",
+        "run:node": "node build/app.js",
+        "dev": "nodemon --watch src/ -e ts --exec ts-node src/app.ts",
+        "run": "npm run build:typescript && npm run run:node",
+        "lint": "eslint src/**/*.ts",
+        "lint-fix": "eslint src/**/*.ts --fix"
+    },
+    "description": "Salty Simulations Discord Bot",
+    "main": "app.ts",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/owen2007/Salty-Simulations-Discord-Bot.git"
+    },
+    "keywords": [
+        "discord",
+        "bot"
+    ],
+    "author": "Salty Simulations",
+    "license": "AGPL-3.0",
+    "bugs": {
+        "url": "https://github.com/owen2007/Salty-Simulations-Discord-Bot/issues"
+    },
+    "homepage": "https://github.com/owen2007/Salty-Simulations-Discord-Bot#readme",
+    "dependencies": {
+        "discord.js": "^13.6.0",
+        "dotenv": "^16.0.0",
+        "eslint": "^8.13.0",
+        "nodemon": "^2.0.15",
+        "sanitize-filename": "^1.6.3"
+    },
+    "devDependencies": {
+        "typescript": "^4.6.3",
+        "ts-node": "^10.4.0"
+    }
 }
