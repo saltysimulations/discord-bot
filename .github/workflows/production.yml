@@ -53,6 +53,7 @@ jobs:
             docker stop $(echo $IMAGE_NAME)
             # Remove old container
             docker rm $(echo $IMAGE_NAME)
+            docker pull $(echo ${{ secrets.DOCKERHUB_USERNAME }})/$(echo $IMAGE_NAME):master
             # Run a new container from a new image
             docker run -d \
             -e DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} \
