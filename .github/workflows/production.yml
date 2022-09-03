@@ -55,7 +55,7 @@ jobs:
             docker rm $(echo $IMAGE_NAME)
             # Run a new container from a new image
             docker run -d \
-            -e DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}
+            -e DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} \
             --restart always \
             --name $(echo $IMAGE_NAME) \
             $(echo ${{ secrets.DOCKERHUB_USERNAME }})/$(echo $IMAGE_NAME):master
