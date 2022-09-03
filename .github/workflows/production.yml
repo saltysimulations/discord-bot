@@ -11,7 +11,7 @@ on:
         required: true
 #2
 env:
-  IMAGE_NAME: "ninjomcs/salty-discord-bot:master"
+  IMAGE_NAME: "salty-discord-bot"
 
 #3
 jobs:
@@ -57,4 +57,4 @@ jobs:
             docker run -d \
             --restart always \
             --name $(echo $IMAGE_NAME) \
-            $(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
+            $(echo $IMAGE_NAME):master
