@@ -1,7 +1,7 @@
 import { CommandDefinition } from "../../lib/command";
 import { makeEmbed } from "../../lib/embed";
 
-const SHOWER_URL = "https://cdn.discordapp.com/attachments/1013173464489803778/1013552920018567357/shower.gif";
+const SHOWER_URL = "https://cdn.discordapp.com/attachments/1013173464489803778/1015726622374117557/shower.gif";
 
 const shower: CommandDefinition = {
     id: "shower", // Unique command identifier
