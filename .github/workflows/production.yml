@@ -57,4 +57,4 @@ jobs:
             docker run -d \
             --restart always \
             --name $(echo $IMAGE_NAME) \
-            $(echo $DOCKERHUB_USERNAME)/$(echo $IMAGE_NAME):master
+            $(echo ${{ secrets.DOCKERHUB_USERNAME }})/$(echo $IMAGE_NAME):master
