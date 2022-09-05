@@ -1,7 +1,49 @@
-import Discord, { PermissionFlagsBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, TextChannel } from "discord.js";
+import Discord, { PermissionFlagsBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, TextChannel, Message, Colors } from "discord.js";
+import { Roles } from "../config";
 import { makeEmbed } from "../lib/embed";
 
-const SCAM_LOGS_CHANNEL_ID = "1013781202605441074";
+const SCAM_LOGS_CHANNEL_ID = "1016324650449510440";
+
+const dmEmbed = (reason: string, by: string) =>
+    makeEmbed({
+        title: "Salty Simulations | Banned",
+        description: "You have been banned from Salty Simulations.",
+        fields: [
+            {
+                name: "Reason",
+                value: reason,
+            },
+            {
+                name: "Banned by",
+                value: by,
+            },
+        ],
+        timestamp: new Date()
+    });
+
+const scamEmbed = (message: Message) => makeEmbed({
+    title: "Potential Scam",
+    author: {
+        name: message.author.tag,
+        iconURL: message.author.displayAvatarURL(),
+    },
+    fields: [
+        {
+            name: "Content",
+            value: message.content,
+        },
+        {
+            name: "Channel",
+            value: message.channel.toString(),
+        },
+    ],
+    timestamp: new Date(),
+    footer: {
+        text: `Author: ${message.author.id}`,
+    },
+});
+
+const noPermsEmbed = makeEmbed({ title: "Error", description: "You do not have permission to do this.", color: Colors.Red })
 
 module.exports = {
     event: "messageCreate",
@@ -14,7 +56,9 @@ module.exports = {
         const everyoneTag = content.includes("@everyone");
         const freeNitro = content.includes("free") && content.includes("nitro");
 
-        if ((freeNitro && containsUrl) || (everyoneTag && !message.member.permissions.has(PermissionFlagsBits.MentionEveryone))) {
+        const admin = message.member.permissions.has(PermissionFlagsBits.Administrator);
+
+        if (((freeNitro && containsUrl) || everyoneTag) && !admin) {
             await message.delete();
             await message.member.timeout(86400000); // 1 day
 
@@ -34,7 +78,12 @@ module.exports = {
                 filter: (i) => i.customId === `${id}-confirm` || i.customId === `${id}-cancel`,
             });
 
-            banCollector.on("collect", async i => {
+            banCollector.on("collect", async (i) => {
+                if (!i.memberPermissions.has(PermissionFlagsBits.BanMembers)) {
+                    scamLogs.send({ embeds: [noPermsEmbed] })
+                    return;
+                }
+
                 if (i.customId === `${id}-ban`) {
                     const sure = new ActionRowBuilder<ButtonBuilder>().addComponents(
                         new ButtonBuilder().setCustomId(`${id}-confirm`).setLabel("Confirm Ban").setStyle(ButtonStyle.Success),
@@ -48,41 +97,29 @@ module.exports = {
                 banCollector.stop();
             });
 
-            sureCollector.on("collect", async i => {
-                console.log(i.customId)
+            sureCollector.on("collect", async (i) => {
+                if (!i.memberPermissions.has(PermissionFlagsBits.BanMembers)) {
+                    scamLogs.send({ embeds: [noPermsEmbed] });
+                    return;
+                }
+
                 if (i.customId === `${id}-confirm`) {
-                    console.log("user banned");
+                    const dm = await message.member.createDM();
+                    await dm.send({ embeds: [dmEmbed("scam", i.member.toString())] });
+
+                    await message.member.ban({ reason: "scam" });
+
                     await i.update({ components: [] });
                 } else {
                     await message.member.timeout(null);
                     await i.update({ components: [] });
                 }
                 sureCollector.stop();
-            })
+            });
 
-            const embed = makeEmbed({
-                title: "Potential Scam",
-                author: {
-                    name: message.author.tag,
-                    iconURL: message.author.displayAvatarURL()
-                },
-                fields: [
-                    {
-                        name: "Content",
-                        value: message.content
-                    },
-                    {
-                        name: "Channel",
-                        value: message.channel.toString()
-                    }
-                ],
-                timestamp: new Date(),
-                footer: {
-                    text: `Author: ${message.author.id}`
-                }
-            })
+            const mods = await message.guild.roles.fetch(Roles.MODERATION_TEAM);
 
-            scamLogs.send({ embeds: [embed], components: [row] })
+            scamLogs.send({ embeds: [scamEmbed(message)], components: [row], content: mods.toString() });
         }
     },
 };
