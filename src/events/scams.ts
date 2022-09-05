@@ -48,7 +48,7 @@ const noPermsEmbed = makeEmbed({ title: "Error", description: "You do not have p
 module.exports = {
     event: "messageCreate",
     run: async (client: Discord.Client<boolean>, message: Discord.Message<boolean>) => {
-        if (!message.guild) return;
+        if (!message.guild || message.author.bot) return;
 
         const content = message.content.toLowerCase();
 
