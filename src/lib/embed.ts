@@ -19,11 +19,11 @@
 //
 //============================================================
 
-import discord from 'discord.js';
+import {EmbedData, EmbedBuilder } from 'discord.js';
 import { Colors } from '../config';
 
-export function makeEmbed(embed: discord.MessageEmbedOptions): discord.MessageEmbed {
-    return new discord.MessageEmbed({
+export function makeEmbed(embed: EmbedData): EmbedBuilder {
+    return new EmbedBuilder({
         color: Colors.SALTY_PURPLE,
         ...embed,
     });

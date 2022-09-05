@@ -25,7 +25,7 @@ const configObject = {
 };
 
 export enum Colors {
-    SALTY_PURPLE = '#a663cc',
+    SALTY_PURPLE = 0xa663cc,
 }
 
 export default configObject;
