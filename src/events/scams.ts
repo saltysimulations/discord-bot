@@ -48,6 +48,8 @@ const noPermsEmbed = makeEmbed({ title: "Error", description: "You do not have p
 module.exports = {
     event: "messageCreate",
     run: async (client: Discord.Client<boolean>, message: Discord.Message<boolean>) => {
+        if (!message.guild) return;
+
         const content = message.content.toLowerCase();
 
         const urlRegex = new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?");
