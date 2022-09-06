@@ -18,32 +18,33 @@ const dmEmbed = (reason: string, by: string) =>
                 value: by,
             },
         ],
-        timestamp: new Date()
+        timestamp: new Date(),
     });
 
-const scamEmbed = (message: Message) => makeEmbed({
-    title: "Potential Scam",
-    author: {
-        name: message.author.tag,
-        iconURL: message.author.displayAvatarURL(),
-    },
-    fields: [
-        {
-            name: "Content",
-            value: message.content,
+const scamEmbed = (message: Message) =>
+    makeEmbed({
+        title: "Potential Scam",
+        author: {
+            name: message.author.tag,
+            iconURL: message.author.displayAvatarURL(),
         },
-        {
-            name: "Channel",
-            value: message.channel.toString(),
+        fields: [
+            {
+                name: "Content",
+                value: message.content,
+            },
+            {
+                name: "Channel",
+                value: message.channel.toString(),
+            },
+        ],
+        timestamp: new Date(),
+        footer: {
+            text: `Author: ${message.author.id}`,
         },
-    ],
-    timestamp: new Date(),
-    footer: {
-        text: `Author: ${message.author.id}`,
-    },
-});
+    });
 
-const noPermsEmbed = makeEmbed({ title: "Error", description: "You do not have permission to do this.", color: Colors.Red })
+const noPermsEmbed = makeEmbed({ title: "Error", description: "You do not have permission to do this.", color: Colors.Red });
 
 module.exports = {
     event: "messageCreate",
@@ -82,7 +83,7 @@ module.exports = {
 
             banCollector.on("collect", async (i) => {
                 if (!i.memberPermissions.has(PermissionFlagsBits.BanMembers)) {
-                    scamLogs.send({ embeds: [noPermsEmbed] })
+                    await scamLogs.send({ embeds: [noPermsEmbed] });
                     return;
                 }
 
@@ -101,13 +102,19 @@ module.exports = {
 
             sureCollector.on("collect", async (i) => {
                 if (!i.memberPermissions.has(PermissionFlagsBits.BanMembers)) {
-                    scamLogs.send({ embeds: [noPermsEmbed] });
+                    await scamLogs.send({ embeds: [noPermsEmbed] });
                     return;
                 }
 
                 if (i.customId === `${id}-confirm`) {
-                    const dm = await message.member.createDM();
-                    await dm.send({ embeds: [dmEmbed("scam", i.member.toString())] });
+                    try {
+                        const dm = await message.member.createDM();
+                        await dm.send({ embeds: [dmEmbed("scam", i.member.toString())] });
+                    } catch (e) {
+                        await scamLogs.send({
+                            embeds: [makeEmbed({ color: Colors.Red, title: "Error", description: `Could not send ban DM: \`${e.message}\`` })],
+                        });
+                    }
 
                     await message.member.ban({ reason: "scam" });
 
@@ -121,7 +128,7 @@ module.exports = {
 
             const mods = await message.guild.roles.fetch(Roles.MODERATION_TEAM);
 
-            scamLogs.send({ embeds: [scamEmbed(message)], components: [row], content: mods.toString() });
+            await scamLogs.send({ embeds: [scamEmbed(message)], components: [row], content: mods.toString() });
         }
     },
 };
